@@ -27,7 +27,7 @@ Ts              0.1                    # Lower values imply a greater coupling
 DT              6.283185307179586       # Time steo for fine-grain monitoring
 Ninterm         1                       # Number of DT between hydro outputs
 Ntot            100                     # Total number of DTs
-OutputDir       outputs/dustydisk256       # Output directory
+OutputDir       @outputs/dustydisk5       # Output directory
 
 # Buffer zone parameters (Only if -DSTOCKHOLM is enabled in accretion.opt)
 
@@ -37,5 +37,20 @@ Spacing         Lin
 
 # Planet parameters
 
-#PlanetConfig		planets/2planets.cfg
+#PlanetConfig		planets/MobileEarth.cfg
 #ThicknessSmoothing 	0.6
+
+
+### Non-uniform mesh
+Spacing             N                       Non-uniform spacing from a mesh-density function
+XMa                 0.1                     Hill radius
+XMb                 0.2                     1.1 del Hill radius
+XMc                 5.0                     funcion
+
+YMa                 0.1
+YMb                 0.2
+YMc                 5.0
+YMy0                1.0
+
+Frame               G                       Method for moving the frame of reference
+OmegaFrame          1.0005
