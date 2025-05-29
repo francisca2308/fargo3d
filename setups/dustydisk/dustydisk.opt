@@ -4,7 +4,7 @@
 # END
 #---------------------------------------------------------------
 
-FLUIDS := 0 1
+FLUIDS := 0 1 
 NFLUIDS = 2
 FARGO_OPT += -DNFLUIDS=${NFLUIDS}
 
@@ -12,6 +12,9 @@ FARGO_OPT += -DNFLUIDS=${NFLUIDS}
 FARGO_OPT += -DDRAGFORCE      
 #We select the drag model (see src/collision_kernel.h)
 FARGO_OPT += -DSTOKESNUMBER   
+
+#Viscosity
+#FARGO_OPT += -DVISCOSITY
 
 #Coordinate System
 FARGO_OPT += -DCYLINDRICAL
@@ -23,8 +26,9 @@ FARGO_OPT += -DY
 #Equation of State
 FARGO_OPT += -DISOTHERMAL
 
-#External potential (Star)
+#Potential
 FARGO_OPT += -DPOTENTIAL
 
 #Buffer zones before applying boundaries
 FARGO_OPT += -DSTOCKHOLM
+FARGO_OPT += -DRAM
