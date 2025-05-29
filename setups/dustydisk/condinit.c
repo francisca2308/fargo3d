@@ -33,6 +33,7 @@ void _Init(int index) {
         vphi[l] -= (1 + EPSILON)/(pow(TS,2)+pow(1+EPSILON,2))*eta*vkmed;
         cs[l]    = 0.0; // Pressureless fluid
       }
+      vphi[l] -= OMEGAFRAME*ymed(j);
     }
   } 
 }

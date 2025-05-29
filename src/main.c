@@ -368,9 +368,6 @@ if (*SPACING=='N'){
 #endif
       /// NOW THE 2D MESH VxMed CONTAINS THE AZIMUTHAL AVERAGE OF Vx in X
       
-#ifdef FLOOR
-      MULTIFLUID(Floor());
-#endif
 
 #ifdef MHD
 #ifdef OHMICDIFFUSION

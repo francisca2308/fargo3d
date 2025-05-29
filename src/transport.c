@@ -180,6 +180,10 @@ void transport(real dt){
 #endif //no STD
   }
 #endif //X 
+
+#ifdef FLOOR
+      FARGO_SAFE(Floor());
+#endif
  
 #ifdef X
   FARGO_SAFE(NewVelocity_x());

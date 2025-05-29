@@ -14,7 +14,7 @@ FARGO_OPT += -DDRAGFORCE
 FARGO_OPT += -DSTOKESNUMBER   
 
 #Viscosity
-#FARGO_OPT += -DVISCOSITY
+FARGO_OPT += -DALPHAVISCOSITY
 
 #Coordinate System
 FARGO_OPT += -DCYLINDRICAL
@@ -32,3 +32,14 @@ FARGO_OPT += -DPOTENTIAL
 #Buffer zones before applying boundaries
 FARGO_OPT += -DSTOCKHOLM
 FARGO_OPT += -DRAM
+
+#FLOORDENS
+FARGO_OPT += -DFLOOR
+
+
+#Cuda blocks
+ifeq (${GPU}, 1)
+FARGO_OPT += -DBLOCK_X=16
+FARGO_OPT += -DBLOCK_Y=16
+FARGO_OPT += -DBLOCK_Z=1
+endif
