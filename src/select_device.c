@@ -30,6 +30,10 @@ void SelectDevice(int myrank){
     device = DeviceManualSelection;
     if (myrank == 1) fprintf (stderr, "WARNING ! You have selected the device manually but your run is MPI\n");
   }
+  if (strncmp(hostname, "mod", 3) == 0) {
+    device = myrank % 4;
+    ChooseDeviceForMe = NO;
+  }
   if (ChooseDeviceForMe) {
     memset(&prop, 0, sizeof(struct cudaDeviceProp));
     prop.major = 2;
