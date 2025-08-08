@@ -8,6 +8,9 @@ FLUIDS := 0 1
 NFLUIDS = 2
 FARGO_OPT += -DNFLUIDS=${NFLUIDS}
 
+#Monitoring options
+MONITOR_SCALAR = MASS
+
 #Enable the drag force between fluids
 FARGO_OPT += -DDRAGFORCE      
 #We select the drag model (see src/collision_kernel.h)
