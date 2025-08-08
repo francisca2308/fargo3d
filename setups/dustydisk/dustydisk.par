@@ -2,8 +2,8 @@ Setup            dustydisk
 
 # Mesh parameters
 
-Nx               2048                      # Number of cells in azimuth
-Ny               2048                 # Number of cells in radius
+Nx               1024
+Ny               1024
 
 Xmin            -3.141592653589793      # Left coordinate of the box in azimuth
 Xmax             3.141592653589793      # Right coordinate of the box in azimuth
@@ -15,19 +15,20 @@ Ymax             2.5                    # Right coordinate of the box in radius
 AspectRatio     0.05                    # Thickness over Radius in the disc
 Sigma0          1.0                     # Surface Density at r=1
 SigmaSlope      0.5                 Slope for the surface density
-Alpha		1.0e-5
+Alpha		1.0e-4
+Indirecterm yes
 
 # Dusty phase parameters
 Epsilon         0.01                     # Dust-to-gas mass ratio
 
 # Drag force parameters
-Ts              0.1                    # Lower values imply a greater coupling
+Ts              0.01                    # Lower values imply a greater coupling
 
 # Output parameters
 DT              0.6283185307179586        # Time steo for fine-grain monitoring
 Ninterm         1                         # Number of DT between hydro outputs
-Ntot            10000                     # Total number of DTs
-OutputDir       @outputs/dustydisk_dt       # Output directory
+Ntot            20
+OutputDir       @outputs/res_32_test
 
 # Buffer zone parameters (Only if -DSTOCKHOLM is enabled in accretion.opt)
 
@@ -45,11 +46,11 @@ ThicknessSmoothing 	0.069
 Spacing             N                       Non-uniform spacing from a mesh-density function
 XMa                 0.014                     
 XMb                 0.0165                     
-XMc                 15.0                     
+XMc                 31.5                 
 
 YMa                 0.007
 YMb                 0.2
-YMc                 5.0
+YMc                 73.0
 YMy0                1.0             is in the middle of the domain, between 0.5 and 1.5
 
 Frame               F                       Method for moving the frame of reference
