@@ -29,9 +29,6 @@ FARGO_OPT += -DY
 #Equation of State
 FARGO_OPT += -DISOTHERMAL
 
-#Potential
-FARGO_OPT += -DPOTENTIAL
-
 #Buffer zones before applying boundaries
 FARGO_OPT += -DSTOCKHOLM
 FARGO_OPT += -DRAM
