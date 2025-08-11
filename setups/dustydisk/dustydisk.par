@@ -16,7 +16,6 @@ AspectRatio     0.05                    # Thickness over Radius in the disc
 Sigma0          1.0                     # Surface Density at r=1
 SigmaSlope      0.5                 Slope for the surface density
 Alpha		1.0e-4
-Indirecterm yes
 
 # Dusty phase parameters
 Epsilon         0.01                     # Dust-to-gas mass ratio
@@ -26,9 +25,9 @@ Ts              0.01                    # Lower values imply a greater coupling
 
 # Output parameters
 DT              0.6283185307179586        # Time steo for fine-grain monitoring
-Ninterm         1                         # Number of DT between hydro outputs
-Ntot            20
-OutputDir       @outputs/res_32_test
+Ninterm         10                         # Number of DT between hydro outputs
+Ntot            2000
+OutputDir       @outputs/sim_16cel_hill
 
 # Buffer zone parameters (Only if -DSTOCKHOLM is enabled in accretion.opt)
 
@@ -38,7 +37,7 @@ TauDamp         0.3                     # Damping timescale (in units of Omega**
 
 # Planet parameters
 
-PlanetConfig		planets/earth.cfg
+Planetmass 3.0e-6
 ThicknessSmoothing 	0.069
 
 
@@ -46,11 +45,11 @@ ThicknessSmoothing 	0.069
 Spacing             N                       Non-uniform spacing from a mesh-density function
 XMa                 0.014                     
 XMb                 0.0165                     
-XMc                 31.5                 
+XMc                 14.0                 
 
 YMa                 0.007
 YMb                 0.2
-YMc                 73.0
+YMc                 5.0
 YMy0                1.0             is in the middle of the domain, between 0.5 and 1.5
 
 Frame               F                       Method for moving the frame of reference
