@@ -59,7 +59,10 @@ void Sources(real dt) {
 #endif
 
 #ifdef X
+  //WriteMerging(Vx_temp,333);  
   FARGO_SAFE(SubStep1_x(dt));
+  //WriteMerging(Vx_temp,999);
+  //exit(23);
 #endif    
 #ifdef Y
   FARGO_SAFE(SubStep1_y(dt));
