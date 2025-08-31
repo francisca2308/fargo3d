@@ -106,6 +106,9 @@ void Potential_cpu() {
 
 //<MAIN_LOOP>
 
+//xplanet[0] = 0.0;
+//yplanet[0] = 1.0;
+
   i = j = k = 0;
 #ifdef Z
   for (k=0; k<size_z; k++) {
@@ -143,9 +146,9 @@ void Potential_cpu() {
 	  mp = mplanet[n]*taper;
 	  
 
-	  planetdistance = sqrt(xplanet[n]*xplanet[n]+
-				yplanet[n]*yplanet[n]+
-				zplanet[n]*zplanet[n]);
+	  planetdistance = sqrt(1.0*1.0+
+				0.0*0.0+
+				0.0*0.0);
 	  rroche = planetdistance*pow((1.0/3.0*mp/MSTAR),1.0/3.0);
 
 	  if (ROCHESMOOTHING != 0)
@@ -157,19 +160,19 @@ void Potential_cpu() {
 
 	  smoothing*=smoothing;
 
-	  dist = ((XC-xplanet[n])*(XC-xplanet[n])+
-		  (YC-yplanet[n])*(YC-yplanet[n])+
-		  (ZC-zplanet[n])*(ZC-zplanet[n]));
+	  dist = ((XC-1.0)*(XC-1.0)+
+		  (YC-0.0)*(YC-0.0)+
+		  (ZC-0.0)*(ZC-0.0));
 #ifndef NODEFAULTSTAR
 	  if (indirect_term == YES) {
 	    /* Indirect term due to planets */
-	    pot[l] += G*mp*(XC*xplanet[n]+YC*yplanet[n]+ZC*zplanet[n])/(planetdistance*
+	    pot[l] += G*mp*(XC*1.0+YC*0.0+ZC*0.0)/(planetdistance*
 										planetdistance*
 										planetdistance);
 	  }
 #endif
 #ifdef NODEFAULTSTAR
-	  if (binary_true && (indirect_term == YES)) {
+	  if (binary_true && (indirect_term == YES)mp) {
 	    if ((n != istar1) && (n != istar2)) { /* For all non-stellar objects */
 	      planetdistance = sqrt((xplanet[n]-xplanet[istar1])*(xplanet[n]-xplanet[istar1])+
 				    (yplanet[n]-yplanet[istar1])*(yplanet[n]-yplanet[istar1])+

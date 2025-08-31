@@ -134,8 +134,8 @@ LIBS_LINUX    = -lm
 INC_LINUX     = 
 NVCC_LINUX    = nvcc
 CUDAOPT_LINUX = -O3 -w #-arch=sm_XX # try utils/cuda/get_cuda_sm.sh
-PARAINC_LINUX = 
-PARALIB_LINUX =
+PARAINC_LINUX = -I/home/fangulo/opt/openmpi/include/openmpi-x86_64/
+PARALIB_LINUX = -L/home/fangulo/opt/openmpi/lib/
 CUDAINC_LINUX = -I${CUDA}/include/
 CUDALIB_LINUX = -L${CUDA}/lib64/  -lcudart -lstdc++
 CXX_LINUX     = g++ -stdlib=libstdc++
