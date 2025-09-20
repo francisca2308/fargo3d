@@ -7,18 +7,20 @@
 #include "fargo3d.h"
 //<\INCLUDES>
 
-void mon_dens_cpu() {
+void mon_dens_cpu () {
 
 //<USER_DEFINED>
   INPUT(Density);
   OUTPUT(Slope);
   real xp = Xplanet; 
   real yp = Yplanet;
-  real mass = MplanetVirtual;
+  //real mass = MplanetVirtual;
+  //real rplanet = sqrt(Xplanet*Xplanet+Yplanet*Yplanet+Zplanet*Zplanet);
+  //real rhill = pow(pow(10,-6)/3.0, 1.0/3.0)*rplanet;
 //<\USER_DEFINED>
 
 
-//<EXTERNAL>// real MplanetVirtual(1);
+//<EXTERNAL>
   real* dens = Density->field_cpu;
   real* interm = Slope->field_cpu;
   int pitch  = Pitch_cpu;
@@ -26,10 +28,11 @@ void mon_dens_cpu() {
   int size_x = Nx+2*NGHX;
   int size_y = Ny+2*NGHY;
   int size_z = Nz+2*NGHZ;
-  real rh = pow(mass/3./MSTAR, 1./3.)*sqrt(xp*xp+yp*yp);
+  //real rh = rhill;
+  real mass = PLANETMASS;
 //<\EXTERNAL>
 
-//<INTERNAL>/home/fangulo/myforkfargo3d/fargo3d/src/mon_dens.c
+//<INTERNAL>
   int i;
   int j;
   int k;
@@ -39,6 +42,8 @@ void mon_dens_cpu() {
   real dy;
   real dz;
   real planet_distance;
+  real rplanet = 1.0;
+  real rh;
 //<\INTERNAL>
 
 //<CONSTANT>
@@ -48,6 +53,8 @@ void mon_dens_cpu() {
 // real Xplanet(1);
 // real Yplanet(1);
 // real MplanetVirtual(1);
+// real xmin(Nx+2*NGHX+1);
+// real ymin(Ny+2*NGHY+1);
 //<\CONSTANT>
 
 //<MAIN_LOOP>
@@ -65,17 +72,20 @@ void mon_dens_cpu() {
 #endif
 //<#>
 #ifdef CYLINDRICAL
-	dx = ymed(j)*cos(xmed(i))-xp;
-	dy = ymed(j)*sin(xmed(i))-yp;
+	dx = ymed(j)*cos(xmed(i))-1.0;
+	dy = ymed(j)*sin(xmed(i))-0.0;
 #endif
-	dist2 = dx*dx+dy*dy+dz*dz;
+	dist2 = dx*dx+dy*dy;
   planet_distance=sqrt(dist2);
 
+
+
 	ll = l;
-  if (planet_distance > rh)
-	  interm[ll] = 0.0;
-  else{
+  rh = pow((3.0e-6)/3.0,1/3)*rplanet;
+  if (planet_distance < rh)
 	  interm[ll] = dens[ll]*Vol(i,j,k);
+  else{
+	  interm[ll] = 0.0;
   }
 //<\#>
 #ifdef X
