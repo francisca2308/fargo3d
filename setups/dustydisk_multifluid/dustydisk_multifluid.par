@@ -2,42 +2,60 @@ Setup            dustydisk_multifluid
 
 # Mesh parameters
 
-Nx               1                      # Number of cells in azimuth
-Ny               256                 # Number of cells in radius
+Nx               1
+Ny               512
 
 Xmin            -3.141592653589793      # Left coordinate of the box in azimuth
 Xmax             3.141592653589793      # Right coordinate of the box in azimuth
 Ymin             0.5                    # Left coordinate of the box in radius
-Ymax             1.5                    # Right coordinate of the box in radius
+Ymax             2.5                    # Right coordinate of the box in radius
 
 # Gasesous disk parameters
 
 AspectRatio     0.05                    # Thickness over Radius in the disc
-Sigma0          1.0                     # Surface Density at r=1
+Sigma0          1.0e-4                     # Surface Density at r=1
+SigmaSlope      0.5                 Slope for the surface density
+Alpha		1.0e-4
 
 # Dusty phase parameters
-
-Epsilon1         1.0                     # Dust-to-gas mass ratio
-Epsilon2         0.5
+Epsilon         0.01                     # Dust-to-gas mass ratio
+Sq              1.5
 
 # Drag force parameters
-Ts1              1.0                    # Lower values imply a greater coupling
-Ts2              0.1
+Tsmax             0.2                  # Lower values imply a greater coupling
+Tsmin             0.01
 
 # Output parameters
-
-DT              6.283185307179586       # Time steo for fine-grain monitoring
-Ninterm         1                       # Number of DT between hydro outputs
-Ntot            100                     # Total number of DTs
-OutputDir       @outputs/dustydisk_multifluid       # Output directory
+DT              0.6283185307179586        # Time steo for fine-grain monitoring
+Ninterm         10                         # Number of DT between hydro outputs
+Ntot            1000
+OutputDir       @outputs/dustydisk_multifluid
 
 # Buffer zone parameters (Only if -DSTOCKHOLM is enabled in accretion.opt)
 
 DampingZone     1.15                    # Radial range for damping (in period-ratios)
 TauDamp         0.3                     # Damping timescale (in units of Omega**(-1))
-Spacing         Lin
+
 
 # Planet parameters
 
-#PlanetConfig		planets/MobileEarth.cfg
-#ThicknessSmoothing 	0.6
+
+# Planetmass          3.0e-6
+PlanetConfig		planets/earth.cfg
+ThicknessSmoothing 	0.069 
+Indirectterm no
+
+
+### Non-uniform mesh
+Spacing             N                       Non-uniform spacing from a mesh-density function
+XMa                 0.043                     
+XMb                 0.051                     
+XMc                 3.8              
+
+YMa                 0.015
+YMb                 0.17
+YMc                 0.2
+YMy0                1.0             is in the middle of the domain, between 0.5 and 1.5
+
+Frame               F                       Method for moving the frame of reference
+OmegaFrame          1.0                  Angular velocity for the frame of reference (If Frame is F).

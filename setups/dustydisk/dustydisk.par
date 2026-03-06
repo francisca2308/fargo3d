@@ -2,8 +2,8 @@ Setup            dustydisk
 
 # Mesh parameters
 
-Nx               2048                      # Number of cells in azimuth
-Ny               2048                 # Number of cells in radius
+Nx               512                      # Number of cells in azimuth
+Ny               512                 # Number of cells in radius
 
 Xmin            -3.141592653589793      # Left coordinate of the box in azimuth
 Xmax             3.141592653589793      # Right coordinate of the box in azimuth
